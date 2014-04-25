@@ -17,13 +17,16 @@ class doyeoman (
       provider => 'npm',
     }
   }
+  
+  # install simple webapp generator
   if ! defined(Package['generator-webapp']) {
     package { 'generator-webapp' :
       provider => 'npm',
       require => [Package['yo']],
     }
   }
-  # install angular deps
+
+  # install angular
   if ! defined(Package['generator-angular']) {
     exec { 'doyeoman-install-angular-deps' :
       path => '/bin:/usr/bin:/sbin:/usr/sbin',
